@@ -16,23 +16,11 @@ for i in new_inputs:
 arr_inputs = np.asarray(inp)
 arr_outputs = np.asarray(inp)
 training_data = zip(arr_inputs,arr_outputs)
-#test_data = arr_inputs
 
+print "__________________________________________________________________\n\n"
 
-#print net.weights
-print "_______________________________________________________________________________\n\n"
+net.SGD(training_data, 1000, 1, 1.0)
 
-net.SGD(training_data, 500, 2, 1.0)
-
-#print net.weights
-#for i in net.weights:
-#	print i.shape
-print "________________________________________________________________________________\n\n"
-
-'''for test,y in training_data:
-	print net.feedforward(test)
-	print ""
-'''
 op = []
 net2 = network.Network([8,3])
 net2.weights[0] = net.weights[0]
@@ -40,6 +28,7 @@ net2.biases[0] = net.biases[0]
 for test,y in training_data:
 	op.append(net2.feedforward(test))
 
+print "__________________________________________________________________\n\n"
 
 for v in op:
 	new = []
@@ -50,3 +39,4 @@ for v in op:
 			new.append(0)
 	print new
 
+print "\n__________________________________________________________________\n\n"
